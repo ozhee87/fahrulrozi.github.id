@@ -106,22 +106,69 @@
         </div>
 
         <div class="row gy-4 mt-4">
-          <div class="col-12"><div class="portfolio-description">
-            <h2>Example: Master Data Mapping &amp; Validation</h2>
-            <p>The fictional table below illustrates how mapping values can be reviewed and tracked. It is an example format, not real hospital data.</p>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover align-middle">
-                <thead class="table-light"><tr><th>Source Code</th><th>Source Unit</th><th>Target Unit</th><th>Validation Status</th><th>Notes</th></tr></thead>
-                <tbody>
-                  <tr><td>SRC-001</td><td>General Clinic</td><td>General Outpatient Clinic</td><td><span class="badge bg-success">Matched</span></td><td>Names and service scope aligned.</td></tr>
-                  <tr><td>SRC-002</td><td>Internal Medicine Clinic</td><td>Internal Medicine Clinic</td><td><span class="badge bg-success">Matched</span></td><td>Reference values aligned.</td></tr>
-                  <tr><td>SRC-003</td><td>Eye Clinic</td><td>Ophthalmology Clinic</td><td><span class="badge bg-warning text-dark">Review</span></td><td>Confirm naming and service equivalence.</td></tr>
-                  <tr><td>SRC-004</td><td>Legacy Service Unit</td><td>Not Assigned</td><td><span class="badge bg-danger">Unmapped</span></td><td>Target reference requires clarification.</td></tr>
-                </tbody>
-              </table>
+          <div class="col-12">
+            <div class="portfolio-description">
+              <h2>Example: Master Data Mapping &amp; Validation</h2>
+              <p>
+                This fictional example shows how source service-unit data can be compared with target-system references.
+                Each row records the proposed mapping, validation status, and follow-up needed before approval.
+              </p>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle" style="min-width: 1050px;">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col">Source Code</th>
+                      <th scope="col">Source Name</th>
+                      <th scope="col">Target Code</th>
+                      <th scope="col">Target Name</th>
+                      <th scope="col">Validation Status</th>
+                      <th scope="col">Follow-up Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SRC-001</td>
+                      <td>General Clinic</td>
+                      <td>TGT-001</td>
+                      <td>General Outpatient Clinic</td>
+                      <td><span class="badge bg-success">Matched</span></td>
+                      <td>Confirm the code and service scope against the approved reference.</td>
+                    </tr>
+                    <tr>
+                      <td>SRC-002</td>
+                      <td>Internal Medicine Clinic</td>
+                      <td>TGT-002</td>
+                      <td>Internal Medicine Clinic</td>
+                      <td><span class="badge bg-success">Matched</span></td>
+                      <td>No discrepancy identified in this illustrative example.</td>
+                    </tr>
+                    <tr>
+                      <td>SRC-003</td>
+                      <td>Eye Clinic</td>
+                      <td>TGT-003</td>
+                      <td>Ophthalmology Clinic</td>
+                      <td><span class="badge bg-warning text-dark">Review</span></td>
+                      <td>Confirm naming and service equivalence with the relevant stakeholder.</td>
+                    </tr>
+                    <tr>
+                      <td>SRC-004</td>
+                      <td>Legacy Service Unit</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td><span class="badge bg-danger">Unmapped</span></td>
+                      <td>Identify an approved target item or request a business decision.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="small text-muted">
+                <em>All codes and records above are fictional and created for portfolio demonstration only.
+                Actual mappings must be validated against approved master data and agreed business rules.</em>
+              </p>
             </div>
-            <p class="small text-muted"><em>All codes and mapping records are fictional examples created for this portfolio.</em></p>
-          </div></div>
+          </div>
         </div>
 
         <div class="row gy-4 mt-4">

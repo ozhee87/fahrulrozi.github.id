@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Healthcare SQL &amp; Data Validation | Fahrulrozi</title>
+  <meta name="description" content="Healthcare SQL and data validation portfolio case study covering duplicate transaction checks, timestamp normalization, category validation, and data quality review.">
+  <meta name="keywords" content="Healthcare SQL, Data Validation, EMR, HIS, SIMRS, SQLite, DBeaver, Duplicate Transactions">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .sql-sample { background: #17212b; color: #ecf2f8; border-radius: 10px; padding: 1.1rem; overflow-x: auto; font-size: .92rem; line-height: 1.55; }
+    .sql-sample code { color: inherit; white-space: pre; }
+    .validation-step { height: 100%; padding: 1.1rem; border: 1px solid #e3e7eb; border-radius: 10px; }
+    .validation-step .step-number { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin-bottom: .65rem; border-radius: 50%; background: #eef4f8; font-weight: 700; }
+  </style>
+</head>
+
+<body class="portfolio-details-page">
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <div class="profile-img"><img src="assets/img/my-profile-img.jpg" alt="Fahrulrozi" class="img-fluid rounded-circle"></div>
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center"><h1 class="sitename">Fahrulrozi</h1></a>
+    <div class="social-links text-center">
+      <a href="https://x.com/fahrulrozhee" class="twitter" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.facebook.com/Fahrulr0zii/" class="facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/fahrul_r0zii/" class="instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/fahrulrozi-621724a4/" class="linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i> Home</a></li>
+        <li><a href="index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        <li><a href="assets/CV - Fahrulrozi.pdf"><i class="bi bi-file-earmark-pdf navicon"></i> Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Healthcare SQL &amp; Data Validation</h1>
+        <nav class="breadcrumbs"><ol><li><a href="index.html">Home</a></li><li><a href="index.html#portfolio">Portfolio</a></li><li class="current">Healthcare SQL &amp; Data Validation</li></ol></nav>
+      </div>
+    </div>
+
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider">
+              <img src="assets/img/portfolio/SQL.jpg" alt="SQL data analysis project cover" class="img-fluid rounded-3 w-100">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Domain:</strong> Healthcare IT</li>
+                <li><strong>Focus:</strong> SQL &amp; Data Quality</li>
+                <li><strong>Tools:</strong> SQL, SQLite, DBeaver</li>
+                <li><strong>Use Cases:</strong> Duplicate checks, timestamp and category validation</li>
+                <li><strong>Dataset:</strong> Fictional example schema</li>
+              </ul>
+            </div>
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+              <h2>Project Overview</h2>
+              <p>This case study demonstrates how SQL can support healthcare data quality review by identifying possible duplicate transactions, checking required values, grouping records by input time, and reviewing transaction categories.</p>
+              <p>The examples use a fictional schema and sample logic for portfolio demonstration. They do not contain real patient, transaction, or hospital data.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4 mt-4">
+          <div class="col-lg-6">
+            <div class="portfolio-description">
+              <h2>01. Duplicate Transaction Review</h2>
+              <p>Identify records that share a transaction number and the same input minute. Such matches are flagged for review rather than treated as confirmed duplicates automatically.</p>
+              <ul>
+                <li>Exclude blank transaction numbers and placeholder values such as a dash.</li>
+                <li>Group by transaction number and normalized input minute.</li>
+                <li>Review matched records against source details before taking action.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="portfolio-description">
+              <h2>02. Timestamp &amp; Field Validation</h2>
+              <p>Consistent date-time formatting is essential for reliable grouping and comparison. When timestamps are stored as text in different local formats, normalize them before running time-based checks.</p>
+              <ul>
+                <li>Check missing or invalid timestamps.</li>
+                <li>Normalize values to a consistent date-time format.</li>
+                <li>Separate date and time fields when needed for reporting.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-description mt-4" data-aos="fade-up">
+          <h2>Example SQL Query: Possible Duplicate Transactions</h2>
+          <p>This illustrative SQLite query groups records by transaction number and input minute. It assumes <code>input_timestamp</code> is already stored in a format SQLite can parse, such as <code>YYYY-MM-DD HH:MM:SS</code>.</p>
+          <pre class="sql-sample"><code>SELECT
+    TRIM(transaction_no) AS transaction_no,
+    strftime('%Y-%m-%d %H:%M', input_timestamp) AS input_minute,
+    COUNT(*) AS record_count
+FROM transaction_records
+WHERE transaction_no IS NOT NULL
+  AND TRIM(transaction_no) NOT IN ('', '-')
+  AND input_timestamp IS NOT NULL
+  AND strftime('%Y-%m-%d %H:%M', input_timestamp) IS NOT NULL
+GROUP BY
+    TRIM(transaction_no),
+    strftime('%Y-%m-%d %H:%M', input_timestamp)
+HAVING COUNT(*) &gt; 1
+ORDER BY record_count DESC, transaction_no;</code></pre>
+          <p class="small text-muted"><em>Note: If source timestamps use a format such as DD/MM/YYYY HH:MM, normalize that text to an ISO-compatible format first; SQLite may not parse every locale-specific text format directly.</em></p>
+        </div>
+
+        <div class="row gy-4 mt-4">
+          <div class="col-lg-6">
+            <div class="portfolio-description">
+              <h2>03. Transaction Category Check</h2>
+              <p>Review selected transaction categories and count records by category. Category labels should follow the agreed terminology used in the source and target systems.</p>
+              <pre class="sql-sample"><code>SELECT
+    TRIM(transaction_category) AS category,
+    COUNT(*) AS total_records
+FROM transaction_records
+WHERE LOWER(TRIM(transaction_category))
+      IN ('tindakan', 'konsultasi')
+GROUP BY LOWER(TRIM(transaction_category))
+ORDER BY category;</code></pre>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="portfolio-description">
+              <h2>04. Data Quality Checklist</h2>
+              <ul>
+                <li>Required identifiers are present and meaningful.</li>
+                <li>Timestamp values can be parsed and compared consistently.</li>
+                <li>Category values use expected labels.</li>
+                <li>Potential duplicates are reviewed against source records.</li>
+                <li>Findings and follow-up actions are documented.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-description mt-4" data-aos="fade-up">
+          <h2>Validation Workflow</h2>
+          <div class="row gy-3 mt-1">
+            <div class="col-md-3 col-6"><div class="validation-step"><span class="step-number">1</span><h4>Inspect</h4><p class="mb-0">Review fields, formats, and missing values.</p></div></div>
+            <div class="col-md-3 col-6"><div class="validation-step"><span class="step-number">2</span><h4>Query</h4><p class="mb-0">Run duplicate and consistency checks.</p></div></div>
+            <div class="col-md-3 col-6"><div class="validation-step"><span class="step-number">3</span><h4>Verify</h4><p class="mb-0">Compare findings with source records.</p></div></div>
+            <div class="col-md-3 col-6"><div class="validation-step"><span class="step-number">4</span><h4>Document</h4><p class="mb-0">Record exceptions and follow-up actions.</p></div></div>
+          </div>
+        </div>
+
+        <div class="portfolio-description mt-4">
+          <h2>Expected Value</h2>
+          <ul>
+            <li>Earlier identification of records requiring review.</li>
+            <li>More consistent transaction timestamps and category values.</li>
+            <li>Clearer evidence for reconciliation and issue follow-up.</li>
+            <li>Repeatable SQL checks that can be adapted to approved schemas.</li>
+          </ul>
+          <p><em>All table names, fields, and example queries on this page are illustrative. Any real implementation should be validated against the approved database schema and data governance rules.</em></p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="index.html#portfolio" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Back to Portfolio</a>
+          <a href="portfolio-details-sql.html" class="btn btn-outline-primary">View SQL Analysis Project <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <div class="copyright text-center"><p>© <span>Copyright</span> <strong class="px-1 sitename">Fahrulrozi</strong> <span>All Rights Reserved</span></p></div>
+      <div class="credits">Healthcare SQL &amp; Data Validation Portfolio</div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

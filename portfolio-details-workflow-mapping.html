@@ -165,6 +165,81 @@
             <li>Identify unmatched, duplicate, or inconsistent mapping values.</li>
           </ul>
 
+          
+<!-- Master Data Mapping Example -->
+<div class="mt-4">
+  <h3>Example: Master Data Mapping &amp; Validation</h3>
+
+  <p>
+    The following illustrative example demonstrates how source reference
+    data can be mapped to target system values and reviewed for consistency.
+  </p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Source Code</th>
+          <th>Source Unit</th>
+          <th>Target Unit</th>
+          <th>Validation Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>SRC-001</td>
+          <td>General Clinic</td>
+          <td>General Outpatient Clinic</td>
+          <td>
+            <span class="badge bg-success">Matched</span>
+          </td>
+          <td>Names and service scope aligned.</td>
+        </tr>
+
+        <tr>
+          <td>SRC-002</td>
+          <td>Internal Medicine Clinic</td>
+          <td>Internal Medicine Clinic</td>
+          <td>
+            <span class="badge bg-success">Matched</span>
+          </td>
+          <td>Reference values aligned.</td>
+        </tr>
+
+        <tr>
+          <td>SRC-003</td>
+          <td>Eye Clinic</td>
+          <td>Ophthalmology Clinic</td>
+          <td>
+            <span class="badge bg-warning text-dark">Review</span>
+          </td>
+          <td>Confirm naming and service equivalence.</td>
+        </tr>
+
+        <tr>
+          <td>SRC-004</td>
+          <td>Legacy Service Unit</td>
+          <td>Not Assigned</td>
+          <td>
+            <span class="badge bg-danger">Unmapped</span>
+          </td>
+          <td>Target reference requires clarification.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small text-muted">
+    Note: All codes and mapping records above are fictional examples
+    created for portfolio demonstration. They do not represent actual
+    hospital master data.
+  </p>
+</div>
+<!-- End Master Data Mapping Example -->
+
+
           <h3>3. Data Validation &amp; Issue Follow-up</h3>
           <p>
             Validate mapping results and document findings so that discrepancies
